@@ -115,6 +115,6 @@ RSpec.describe 'invoices show' do
     within("#the-status-#{@ii_1.id}") do
       click_on('Discount Info')
     end
-    expect(current_path).to eq("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount1.id}")
+    expect(current_path).to eq("/merchant/#{@merchant1.id}/bulk_discounts")
   end
 end

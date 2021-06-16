@@ -18,5 +18,4 @@ class Invoice < ApplicationRecord
   def discount_revenue
     bulk_discounts.sum('(1.0 - (bulk_discounts.percentage_discount / 100.0)) * (invoice_items.unit_price * invoice_items.quantity)')
   end
-
 end

@@ -16,6 +16,7 @@ class Admin::MerchantsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
