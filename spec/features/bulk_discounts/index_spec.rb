@@ -64,9 +64,7 @@ RSpec.describe 'index' do
 
     it 'has a link to each bulk discount show page' do
 
-      expect(page).to have_link("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount1.id}")
-      expect(page).to have_link("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount2.id}")
-      expect(page).to have_link("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount3.id}")
+      expect(page).to have_link("View Discount")
     end
   end
   describe 'public holidays' do
