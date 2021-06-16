@@ -2,7 +2,7 @@ class BulkDiscountsController < ApplicationController
 
   def show
     @merchant = Merchant.find(params[:merchant_id])
-    @discount = @merchant.bulk_discounts.find(params[:id])
+    @discount = BulkDiscount.find(params[:id])
   end
 
   def index
@@ -23,6 +23,22 @@ class BulkDiscountsController < ApplicationController
     else
       flash[:notice] = "Error: Please Fill In Field"
       redirect_to "/merchant/#{merchant.id}/bulk_discounts/new"
+    end
+  end
+
+  def edit
+    @merchant = Merchant.find(params[:merchant_id])
+    @discount = BulkDiscount.find(params[:id])
+  end
+
+  def update
+    merchant = Merchant.find(params[:merchant_id])
+    discount = BulkDiscount.find(params[:id])
+    if discount.update(discount_params)
+      redirect_to "/merchant/#{merchant.id}/bulk_discounts/#{discount.id}"
+    else
+      flash[:notice] = "Error: Please Fill In Field"
+      redirect_to "/merchant/#{merchant.id}/bulk_discounts/#{discount.id}/edit"
     end
   end
 

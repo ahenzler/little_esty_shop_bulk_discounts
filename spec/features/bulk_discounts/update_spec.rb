@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'show' do
-  before :each do
+RSpec.describe 'bulk discount edit' do
+  before(:each) do
     @merchant1 = Merchant.create!(name: 'Hair Care')
 
     @customer_1 = Customer.create!(first_name: 'Joey', last_name: 'Smith')
@@ -40,26 +40,42 @@ RSpec.describe 'show' do
     @discount1 = @merchant1.bulk_discounts.create!(percentage_discount: 70, quantity_threshold: 3)
     @discount2 = @merchant1.bulk_discounts.create!(percentage_discount: 50, quantity_threshold: 1)
     @discount3 = @merchant1.bulk_discounts.create!(percentage_discount: 20, quantity_threshold: 5)
+
+    visit "/merchant/#{@merchant1.id}/bulk_discounts/#{@discount1.id}/edit"
   end
 
-  describe 'bulk discount information' do
-    it 'has bulk discount attributes' do
-      visit "/merchant/#{@merchant1.id}/bulk_discounts/#{@discount1.id}"
+  describe 'edit discount' do
+    it 'renders the edit form' do
 
-      expect(page).to have_content('Bulk Discount Information')
-      expect(page).to have_content('Quantity Threshold')
-      expect(page).to have_content(@discount1.quantity_threshold)
-      expect(page).to have_content('Percentage Discount')
-      expect(page).to have_content(@discount1.percentage_discount)
+      expect(page).to have_content('Edit Bulk Discount')
+      expect(find('form')).to have_content('Percentage discount')
+      expect(find('form')).to have_content('Quantity threshold')
     end
   end
 
-    describe 'edit discount' do
-    it 'can edit discount' do
-      visit "/merchant/#{@merchant1.id}/bulk_discounts/#{@discount1.id}"
+  describe 'update' do
+    context 'given valid data' do
+      it 'updates the discount' do
 
-      expect(page).to have_button("Edit Discount")
-        click_on("Edit Discount")
+        fill_in 'Percentage discount', with: 25
+        fill_in 'Quantity threshold', with: 3
+        click_on 'Save'
+
+        expect(page).to have_current_path("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount1.id}")
+        expect(page).to have_content(25)
+        expect(page).to have_content(3)
+      end
+    end
+
+    context 'given invalid data' do
+      it 're-renders the update form' do
+
+        fill_in 'Percentage discount', with: '25'
+        click_on 'Save'
+
+        expect(page).to have_current_path("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount1.id}/edit")
+        expect(page).to have_content("Error: Please Fill In Field")
+      end
     end
   end
 end
