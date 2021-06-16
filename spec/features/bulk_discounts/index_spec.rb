@@ -92,4 +92,14 @@ RSpec.describe 'index' do
       expect(current_path).to eq("/merchant/#{@merchant1.id}/bulk_discounts/new")
     end
   end
+
+  describe 'remove discount' do
+    it 'can remove discount' do
+      expect(page).to have_button("Delete Discount")
+      within "div#dis-#{@discount1.id}" do
+        click_on("Delete Discount")
+      end
+      expect(page).to_not have_content(@discount1)
+    end
+  end
 end

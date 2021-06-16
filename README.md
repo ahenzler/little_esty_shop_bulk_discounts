@@ -73,9 +73,8 @@ Item B is ordered in a quantity of 15
 In this example, Item A1 should discounted at 20% off, and Item A2 should discounted at 30% off. Item B should not be discounted.
 
 User Stories
-Merchant Bulk Discounts Index
-
 [x]
+Merchant Bulk Discounts Index
 As a merchant
 When I visit my merchant dashboard
 Then I see a link to view all my discounts
@@ -104,8 +103,7 @@ When I fill in the form with valid data
 Then I am redirected back to the bulk discount index
 And I see my new bulk discount listed
 
-
-[]
+[x]
 Merchant Bulk Discount Delete
 As a merchant
 When I visit my bulk discounts index
@@ -113,15 +111,15 @@ Then next to each bulk discount I see a link to delete it
 When I click this link
 Then I am redirected back to the bulk discounts index page
 And I no longer see the discount listed
-Merchant Bulk Discount Show
 
 []
+Merchant Bulk Discount Show
 As a merchant
 When I visit my bulk discount show page
 Then I see the bulk discount's quantity threshold and percentage discount
-Merchant Bulk Discount Edit
 
 []
+Merchant Bulk Discount Edit
 As a merchant
 When I visit my bulk discount show page
 Then I see a link to edit the bulk discount
@@ -131,34 +129,41 @@ And I see that the discounts current attributes are pre-poluated in the form
 When I change any/all of the information and click submit
 Then I am redirected to the bulk discount's show page
 And I see that the discount's attributes have been updated
-Merchant Invoice Show Page: Total Revenue and Discounted Revenue
 
 []
+Merchant Invoice Show Page: Total Revenue and Discounted Revenue
 As a merchant
 When I visit my merchant invoice show page
 Then I see the total revenue for my merchant from this invoice (not including discounts)
 And I see the total discounted revenue for my merchant from this invoice which includes bulk discounts in the calculation
-Merchant Invoice Show Page: Link to applied discounts
 
 []
+Merchant Invoice Show Page: Link to applied discounts
 As a merchant
 When I visit my merchant invoice show page
 Next to each invoice item I see a link to the show page for the bulk discount that was applied (if any)
-Admin Invoice Show Page: Total Revenue and Discounted Revenue
 
 []
+Admin Invoice Show Page: Total Revenue and Discounted Revenue
 As an admin
 When I visit an admin invoice show page
 Then I see the total revenue from this invoice (not including discounts)
 And I see the total discounted revenue from this invoice which includes bulk discounts in the calculation
+
 Extensions
-When an invoice is pending, a merchant should not be able to delete or edit a bulk discount that applies to any of their items on that invoice.
-When an Admin marks an invoice as “completed”, then the discount percentage should be stored on the invoice item record so that it can be referenced later
-Merchants should not be able to create/edit bulk discounts if they already have a discount in the system that would prevent the new discount from being applied (see example 4)
-Holiday Discount Extensions
-Create a Holiday Discount
 
 []
+When an invoice is pending, a merchant should not be able to delete or edit a bulk discount that applies to any of their items on that invoice.
+
+[]
+When an Admin marks an invoice as “completed”, then the discount percentage should be stored on the invoice item record so that it can be referenced later
+
+[]
+Merchants should not be able to create/edit bulk discounts if they already have a discount in the system that would prevent the new discount from being applied (see example 4)
+Holiday Discount Extensions
+
+[]
+Create a Holiday Discount
 As a merchant,
 when I visit the discounts index page,
 In the Holiday Discounts section, I see a `create discount` button next to each of the 3 upcoming holidays.
@@ -169,10 +174,10 @@ Percentage Discount: 30
 Quantity Threshold: 2
 
 I can leave the information as is, or modify it before saving.
-I should be redirected to the discounts index page where I see the newly created discount added to the list of discounts.
-View a Holiday Discount
+I should be redirected to the discounts index page where I see the newly created discount added to the list of discounts.=
 
 []
+View a Holiday Discount
 As a merchant (if I have created a holiday discount for a specific holiday),
 when I visit the discount index page,
 within the `Upcoming Holidays` section I should not see the button to 'create a discount' next to that holiday,
