@@ -130,7 +130,7 @@ When I change any/all of the information and click submit
 Then I am redirected to the bulk discount's show page
 And I see that the discount's attributes have been updated
 
-[]
+[x]
 Merchant Invoice Show Page: Total Revenue and Discounted Revenue
 As a merchant
 When I visit my merchant invoice show page
