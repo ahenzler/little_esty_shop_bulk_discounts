@@ -143,7 +143,7 @@ As a merchant
 When I visit my merchant invoice show page
 Next to each invoice item I see a link to the show page for the bulk discount that was applied (if any)
 
-[]
+[x]
 Admin Invoice Show Page: Total Revenue and Discounted Revenue
 As an admin
 When I visit an admin invoice show page
