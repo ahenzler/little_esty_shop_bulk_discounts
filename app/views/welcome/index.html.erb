@@ -1,12 +1,2 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <p class="navbar-text"><%= @merchant.name %></p>
-    <ul class="nav navbar-nav">
-      <li><%= link_to 'Dashboard', merchant_dashboard_index_path, style: 'pull-right' %>
-      <%= link_to 'My Items', merchant_items_path(@merchant), style: 'pull-right' %>
-      <%= link_to 'My Invoices', merchant_invoices_path(@merchant), style: 'pull-right' %></li>
-      <li><%= link_to 'Discounts', merchant_bulk_discounts_path, class: 'link_1', style: 'pull-right' %>
-    </ul>
-  </nav>
-</div>
-
-<h1>Welcome! Hope you find all that you need, and have a super day!</h1>
+<h1>Welcome#index</h1>
+<p><%= link_to 'Dashboard', merchant_dashboard_index_path, style: 'pull-right' %></p>
