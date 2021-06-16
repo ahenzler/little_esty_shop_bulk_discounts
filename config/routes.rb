@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
   get '/', to: 'application#welcome'
 
   resources :discounts
