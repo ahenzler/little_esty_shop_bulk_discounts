@@ -93,9 +93,8 @@ In this section the name and date of the next 3 upcoming US holidays are listed.
 
 Use the Next Public Holidays Endpoint in the [Nager.Date API](https://date.nager.at/swagger/index.html)
 
+[x]
 Merchant Bulk Discount Create
-
-[]
 As a merchant
 When I visit my bulk discounts index
 Then I see a link to create a new discount
@@ -104,9 +103,10 @@ Then I am taken to a new page where I see a form to add a new bulk discount
 When I fill in the form with valid data
 Then I am redirected back to the bulk discount index
 And I see my new bulk discount listed
-Merchant Bulk Discount Delete
+
 
 []
+Merchant Bulk Discount Delete
 As a merchant
 When I visit my bulk discounts index
 Then next to each bulk discount I see a link to delete it

@@ -49,35 +49,47 @@ RSpec.describe 'index' do
     visit "/merchant/#{@merchant1.id}/bulk_discounts"
   end
 
-  it 'lists all bulk discounts and attributes' do
+  describe 'bulk discount list and links' do
+    it 'lists all bulk discounts and attributes' do
 
-    expect(page).to have_content(@discount1.percentage_discount)
-    expect(page).to have_content(@discount1.quantity_threshold)
+      expect(page).to have_content(@discount1.percentage_discount)
+      expect(page).to have_content(@discount1.quantity_threshold)
 
-    expect(page).to have_content(@discount2.percentage_discount)
-    expect(page).to have_content(@discount2.quantity_threshold)
+      expect(page).to have_content(@discount2.percentage_discount)
+      expect(page).to have_content(@discount2.quantity_threshold)
 
-    expect(page).to have_content(@discount3.percentage_discount)
-    expect(page).to have_content(@discount3.quantity_threshold)
+      expect(page).to have_content(@discount3.percentage_discount)
+      expect(page).to have_content(@discount3.quantity_threshold)
+    end
+
+    it 'has a link to each bulk discount show page' do
+
+      expect(page).to have_link("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount1.id}")
+      expect(page).to have_link("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount2.id}")
+      expect(page).to have_link("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount3.id}")
+    end
+  end
+  describe 'public holidays' do
+    it 'has next three holidays' do
+
+      expect(page).to have_content('Upcoming Holidays')
+
+      expect(page).to have_content('Labor Day')
+      expect(page).to have_content('Columbus Day')
+      expect(page).to have_content('Veterans Day')
+
+      expect(page).to have_content('2021-07-05')
+      expect(page).to have_content('2021-09-06')
+      expect(page).to have_content('2021-10-11')
+    end
   end
 
-  it 'has a link to each bulk discount show page' do
+  describe 'create new discount' do
+    it 'can create new discount' do
 
-    expect(page).to have_link("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount1.id}")
-    expect(page).to have_link("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount2.id}")
-    expect(page).to have_link("/merchant/#{@merchant1.id}/bulk_discounts/#{@discount3.id}")
-  end
-
-  it 'has next three holidays' do
-
-    expect(page).to have_content('Upcoming Holidays')
-
-    expect(page).to have_content('Labor Day')
-    expect(page).to have_content('Columbus Day')
-    expect(page).to have_content('Veterans Day')
-
-    expect(page).to have_content('2021-07-05')
-    expect(page).to have_content('2021-09-06')
-    expect(page).to have_content('2021-10-11')
+      expect(page).to have_link('Create New Discount')
+      click_on('Create New Discount')
+      expect(current_path).to eq("/merchant/#{@merchant1.id}/bulk_discounts/new")
+    end
   end
 end
